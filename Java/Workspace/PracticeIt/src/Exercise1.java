@@ -13,6 +13,6 @@ public class Exercise1
 		//Don't forget: use \" instead of " !
 		System.out.println("Don't forget: use \\\" instead of \" !");
 		//'' is not the same as "
-		System.out.println("'' is not the same as \"");
+		System.out.println("'' is not the same as \"");		
 	}
 }
