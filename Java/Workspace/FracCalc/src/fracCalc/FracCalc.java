@@ -4,6 +4,19 @@ import java.util.Scanner;
 
 public class FracCalc {
 
+	//Operand 1
+	public static int operand1Wholenumber = 0;
+	public static int operand1Numerator = 0;
+	public static int operand1Denominator = 0;
+	
+	//Operand 2
+	public static int operand2Wholenumber = 0;
+	public static int operand2Numerator = 0;
+	public static int operand2Denominator = 0;
+	
+	//Operator
+	public static String operator = "";
+	
     public static void main(String[] args) 
     {
     	Scanner console = new Scanner(System.in);
@@ -51,14 +64,66 @@ public class FracCalc {
         	//improper fractions  8/4 
         	//integers. -1 
         	//The integer and fraction parts of a mixed fraction will be separated by an underscore (_) (e.g., “1_3/4” is one and three fourth to distinguish it from “13/4” which is thirteen fourth).
-        	return parseFraction(operand2);	
+        	parseFraction(operand1, true);	
+        	parseFraction(operand2, false);	
+        	FracCalc.operator = operator;
+        	return "4";
         }        
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
     
-    public static String parseFraction(String operand) {
+    public static void parseFraction(String operand, Boolean operand1) {
     	   String fraction = operand;   
+		   String wholenumber = "0";
+		   String numerator = "0";
+		   String denominator = "0";
+		   String[] splitwholenumber = fraction.split("_");
+		   if (splitwholenumber.length == 2)
+		   {
+			   //Mixed Fraction Condition
+			   wholenumber = fraction.split("_")[0];
+			   numerator = fraction.split("_")[1].split("/")[0];
+			   denominator = fraction.split("_")[1].split("/")[1];
+		   }
+		   else
+		   {
+			   //Check if it's whole number only
+			   String[] splitnumeratoranddenominator = fraction.split("/");
+			   //If there are 2 values in array, this means it's a fraction else it's only a whole number
+			   if (splitnumeratoranddenominator.length == 2)
+			   {
+				   numerator = splitnumeratoranddenominator[0];
+				   denominator = splitnumeratoranddenominator[1];				   
+			   }
+			   else
+			   {
+				   wholenumber = operand;
+				   denominator = "1";
+			   }
+		   }
+		   
+ 		   SetStaticFieldValues(operand1, Integer.parseInt(wholenumber), Integer.parseInt(numerator), Integer.parseInt(denominator));
+ 		   
+    }
+    
+    public static void SetStaticFieldValues(Boolean operand1, int wholenumber, int numerator, int denominator) {
+    	
+    	if (operand1) { 		   
+ 		   FracCalc.operand1Wholenumber = wholenumber;
+ 		   FracCalc.operand1Numerator = numerator;
+ 		   FracCalc.operand1Denominator  = denominator;    		
+    	}
+    	else
+    	{
+    	   FracCalc.operand2Wholenumber = wholenumber;
+   		   FracCalc.operand2Numerator = numerator;
+   		   FracCalc.operand2Denominator  = denominator;  
+    	}
+    }
+    
+    public static String parseFractionCheckPoint2(String operand) {
+ 	   String fraction = operand;   
 		   String wholenumber = "0";
 		   String numerator = "0";
 		   String denominator = "0";
@@ -88,7 +153,8 @@ public class FracCalc {
 		   }	   
 		  
 		   return "whole:" + wholenumber + " numerator:" + numerator + " denominator:" + denominator;    	
-    }
+ }
+    
     
     public static String turnImproperFractionToMixedFraction(int numerator , int denominator) {
         //Integer a = numerator / denominator;
