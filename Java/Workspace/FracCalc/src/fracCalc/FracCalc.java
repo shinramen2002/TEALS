@@ -51,7 +51,7 @@ public class FracCalc {
         	//improper fractions  8/4 
         	//integers. -1 
         	//The integer and fraction parts of a mixed fraction will be separated by an underscore (_) (e.g., “1_3/4” is one and three fourth to distinguish it from “13/4” which is thirteen fourth).
-        	return operand2;	
+        	return parseFraction(operand2);	
         }        
     }
 
@@ -60,19 +60,30 @@ public class FracCalc {
     public static String parseFraction(String operand) {
     	   String fraction = operand;   
 		   String wholenumber = "0";
-		   String numerator = "";
-		   String denominator = "";
+		   String numerator = "0";
+		   String denominator = "0";
 		   String[] splitwholenumber = fraction.split("_");
 		   if (splitwholenumber.length == 2)
 		   {
+			   //Mixed Fraction Condition
 			   wholenumber = fraction.split("_")[0];
 			   numerator = fraction.split("_")[1].split("/")[0];
 			   denominator = fraction.split("_")[1].split("/")[1];
 		   }
 		   else
 		   {
-			   numerator = fraction.split("/")[0];
-			   denominator = fraction.split("/")[1];
+			   //Check if it's whole number only
+			   String[] splitnumeratoranddenominator = fraction.split("/");
+			   //If there are 2 values in array, this means it's a fraction else it's only a whole number
+			   if (splitnumeratoranddenominator.length == 2)
+			   {
+				   numerator = splitnumeratoranddenominator[0];
+				   denominator = splitnumeratoranddenominator[1];				   
+			   }
+			   else
+			   {
+				   wholenumber = operand;
+			   }
 		   }	   
 		  
 		   return "whole:" + wholenumber + " numerator:" + numerator + " denominator:" + denominator;    	
