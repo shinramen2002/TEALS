@@ -14,6 +14,7 @@ public class FracCalc {
 		while (!equation.toLowerCase().equals("quit"))
 		{
 			String results = produceAnswer(equation);
+			//Checkpoint 1: Parsing one line of input
 			System.out.println(results);
 			System.out.print("Please enter your equation (quit to quit): ");
 			equation = console.nextLine();			
@@ -39,10 +40,32 @@ public class FracCalc {
         {
         	return "Input Expression is not in the correct Format. Values and operators will be separated by a single space";
         }
-    	
-        return "3";//Integer.toString(arrayinput.length);
+        else
+        {
+        	String operand1 = arrayinput[0];
+        	String operator = arrayinput[1];
+        	String operand2 = arrayinput[2];
+        	//Input values may be in the form of
+        	//mixed fractions 1_3/4
+        	//proper fractions 2/5
+        	//improper fractions  8/4 
+        	//integers. -1 
+        	//The integer and fraction parts of a mixed fraction will be separated by an underscore (_) (e.g., “1_3/4” is one and three fourth to distinguish it from “13/4” which is thirteen fourth).
+        	return operand2;	
+        }        
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
+    
+    public static String parseFraction(String operand) {
+    	return "";
+    }
+    
+    public static String turnImproperFractionToMixedFraction(int numerator , int denominator) {
+        //Integer a = numerator / denominator;
+        //Integer b = numerator % denominator);
+        //return a != 0 ? (a + " " + b + "/" + denominator) : (b + "/" + denominator);
+    	return "";
+    }   
     
 }
