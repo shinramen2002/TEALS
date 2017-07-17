@@ -13,5 +13,4 @@ public class Difference {
 //		The other is what appears on the "console."
 		System.out.println("The other is what appears on the \"console.\"");
 	}
-
 }
