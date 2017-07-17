@@ -17,7 +17,7 @@ import fracCalc.FracCalcTestHelper;
 public class FracCalcProduceAnswerTests {
 	   @Test public void ValidateInput_ShouldBeCorrectFormat() 
 	    {
-		  assertEquals("Input is not in the correct format","whole:4 numerator:0 denominator:0", FracCalc.produceAnswer("2 + 4"));		   
+		  assertEquals("Input is not in the correct format","whole:4 numerator:0 denominator:1", FracCalc.produceAnswer("2 + 4"));		   
 	    }
 	   
 	   @Test public void ValidateInput_ShouldNotBeCorrectFormat() 
@@ -54,7 +54,7 @@ public class FracCalcProduceAnswerTests {
 	   @Test public void Validate_ParseFraction_OnlyWholeNumber() 
 	    {
 		   String fraction = "1";   
-		   assertEquals("Incorrect Fraction Parsing","whole:1 numerator:0 denominator:0", FracCalc.parseFraction(fraction));
+		   assertEquals("Incorrect Fraction Parsing","whole:1 numerator:0 denominator:1", FracCalc.parseFraction(fraction));
 		   System.out.println(FracCalc.parseFraction(fraction));   
 	    }
 	   

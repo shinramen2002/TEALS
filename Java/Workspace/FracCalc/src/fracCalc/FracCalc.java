@@ -83,6 +83,7 @@ public class FracCalc {
 			   else
 			   {
 				   wholenumber = operand;
+				   denominator = "1";
 			   }
 		   }	   
 		  
