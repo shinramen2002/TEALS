@@ -36,9 +36,19 @@ public class FracCalcProduceAnswerTests {
 	    }
 	   
 	   // ParseFraction Tests
-	   @Test public void Validate_ParseFraction() throws Exception 
+	   @Test public void Validate_ParseFraction_Mixed() 
 	    {
-		   throw new Exception("Not Yet Implemented");   
+		   String fraction = "6_5/8";   
+		   assertEquals("Incorrect Fraction Parsing","whole:6 numerator:5 denominator:8", FracCalc.parseFraction(fraction));
+		   System.out.println(FracCalc.parseFraction(fraction));   
+	    }
+	   
+	   // ParseFraction Tests
+	   @Test public void Validate_ParseFraction_Improper() 
+	    {
+		   String fraction = "5/8";   
+		   assertEquals("Incorrect Fraction Parsing","whole:0 numerator:5 denominator:8", FracCalc.parseFraction(fraction));
+		   System.out.println(FracCalc.parseFraction(fraction));   
 	    }
 	   
 	   //TurnImproperFractionToMixedFraction Tests

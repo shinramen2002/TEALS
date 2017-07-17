@@ -58,7 +58,24 @@ public class FracCalc {
     // TODO: Fill in the space below with any helper methods that you think you will need
     
     public static String parseFraction(String operand) {
-    	return "";
+    	   String fraction = operand;   
+		   String wholenumber = "0";
+		   String numerator = "";
+		   String denominator = "";
+		   String[] splitwholenumber = fraction.split("_");
+		   if (splitwholenumber.length == 2)
+		   {
+			   wholenumber = fraction.split("_")[0];
+			   numerator = fraction.split("_")[1].split("/")[0];
+			   denominator = fraction.split("_")[1].split("/")[1];
+		   }
+		   else
+		   {
+			   numerator = fraction.split("/")[0];
+			   denominator = fraction.split("/")[1];
+		   }	   
+		  
+		   return "whole:" + wholenumber + " numerator:" + numerator + " denominator:" + denominator;    	
     }
     
     public static String turnImproperFractionToMixedFraction(int numerator , int denominator) {
