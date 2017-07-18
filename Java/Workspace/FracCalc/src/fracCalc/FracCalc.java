@@ -243,6 +243,27 @@ public class FracCalc {
 		return FracCalc.finalresult;
 	}
 	
+	public static String Divide() {
+		// Algorithm
+		// 1) Set all Fractions to Improper Fractions to make operations easier
+		// 2) Check to see if the denominators are the same
+		// 3) If yes, simply add the numerator then set the display to either whole
+		// number or fraction
+		// 4) If no, Check the common denominator
+		// 4.1) Perform normal operation
+		// 4.2) Simply the improper Fraction
+		int tempnumerator = 0;
+		int tempdenominator = 0;
+		//Invert reciprocal of Operand 2
+		int tempvalue = FracCalc.operand2Denominator;
+		FracCalc.operand2Denominator = FracCalc.operand2Numerator;
+		FracCalc.operand2Numerator = tempvalue;
+		tempnumerator = FracCalc.operand1ImproperNumerator * FracCalc.operand2ImproperNumerator;
+		tempdenominator =  FracCalc.operand1Denominator * FracCalc.operand2Denominator;
+	    SetResult(tempnumerator, tempdenominator);
+	    return FracCalc.finalresult;
+	}
+	
 
 	public static void SetResult(int numerator, int denominator) {
 		if (numerator % denominator == 0) {
