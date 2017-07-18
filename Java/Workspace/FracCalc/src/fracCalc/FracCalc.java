@@ -70,7 +70,11 @@ public class FracCalc {
 			parseFraction(operand1, true);
 			parseFraction(operand2, false);
 			FracCalc.operator = operator;
-			return "4";
+			if (operator.equalsIgnoreCase("+"))
+			{
+				FracCalc.Add();	
+			}
+			return FracCalc.finalresult;
 		}
 	}
 
