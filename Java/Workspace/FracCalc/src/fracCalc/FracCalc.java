@@ -301,12 +301,26 @@ public class FracCalc {
 		int tempnumerator = 0;
 		int tempdenominator = 0;
 		//Invert reciprocal of Operand 2
-		int tempvalue = FracCalc.operand2Denominator;
-		FracCalc.operand2Denominator = FracCalc.operand2ImproperNumerator;
-		FracCalc.operand2ImproperNumerator = tempvalue;
-		tempnumerator = FracCalc.operand1ImproperNumerator * FracCalc.operand2ImproperNumerator;
-		tempdenominator =  FracCalc.operand1Denominator * FracCalc.operand2Denominator;
-	    SetResult(tempnumerator, tempdenominator);
+		//Again Check to see if the remainder is negative
+		if (FracCalc.operand2ImproperNumerator < 0)
+		{
+			FracCalc.operand2ImproperNumerator = Integer.parseInt(Integer.toString(FracCalc.operand2ImproperNumerator).split("-")[1]);
+			int tempvalue = FracCalc.operand2Denominator;
+			FracCalc.operand2Denominator = FracCalc.operand2ImproperNumerator;
+			FracCalc.operand2ImproperNumerator = tempvalue;
+			tempnumerator = (FracCalc.operand1ImproperNumerator * -1) * FracCalc.operand2ImproperNumerator;
+			tempdenominator =  FracCalc.operand1Denominator * FracCalc.operand2Denominator;
+		}
+		else
+		{
+			int tempvalue = FracCalc.operand2Denominator;
+			//Always set negative value on numerator
+			FracCalc.operand2Denominator = FracCalc.operand2ImproperNumerator;
+			FracCalc.operand2ImproperNumerator = tempvalue;
+			tempnumerator = FracCalc.operand1ImproperNumerator * FracCalc.operand2ImproperNumerator;
+			tempdenominator =  FracCalc.operand1Denominator * FracCalc.operand2Denominator;
+		}
+		SetResult(tempnumerator, tempdenominator);
 	    return FracCalc.finalresult;
 	}	
 
