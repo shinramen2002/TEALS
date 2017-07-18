@@ -89,6 +89,7 @@ public class FracCalcProduceAnswerTests {
 		FracCalc.parseFraction("2/4", false);
 		String result = FracCalc.Add();
 		assertEquals("5/4", result);
+		System.out.println(result);
 	}
 
 	@Test
@@ -97,6 +98,7 @@ public class FracCalcProduceAnswerTests {
 		FracCalc.parseFraction("1/4", false);
 		String result = FracCalc.Add();
 		assertEquals("1", result);
+		System.out.println(result);
 	}
 
 	@Test
@@ -105,6 +107,7 @@ public class FracCalcProduceAnswerTests {
 		FracCalc.parseFraction("1/3", false);
 		String result = FracCalc.Add();
 		assertEquals("13/12", result);
+		System.out.println(result);
 	}
 
 	// Calculation Tests
@@ -115,9 +118,21 @@ public class FracCalcProduceAnswerTests {
 		FracCalc.parseFraction("1_1/2", false);
 		String result = FracCalc.Add();
 		assertEquals("7/4", result);
+		System.out.println("Test Case 1 - Passed! : " + result);
 	}
 
 	// Test Case 2: 8/4 + 2 = 4
+	@Test
+	public void Validate_CalculateAddTestCase2() {
+		FracCalc.parseFraction("8/4", true);
+		FracCalc.parseFraction("2", false);
+		String result = FracCalc.Add();
+		assertEquals("4", result);
+		System.out.println("Test Case 2 - Passed! : " + result);
+	}
+
+
+
 	// Test Case 3: -1 * -1/2 = 1/2
 	// Test Case 4: -11/17 + -1/17 = -12/17
 	// Test Case 5: 0 * 25_462/543 0
