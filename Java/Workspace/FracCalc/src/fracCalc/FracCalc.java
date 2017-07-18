@@ -114,15 +114,30 @@ public class FracCalc {
     	if (operand1) { 		   
  		   FracCalc.operand1Wholenumber = wholenumber;
  		   FracCalc.operand1Numerator = numerator;
- 		   FracCalc.operand1Denominator  = denominator;   
- 		   FracCalc.operand1ImproperNumerator = (wholenumber * denominator) + numerator;
+ 		   FracCalc.operand1Denominator  = denominator;
+ 		   if (wholenumber != 0)
+ 		   {
+ 			  FracCalc.operand1ImproperNumerator = (wholenumber * denominator) + numerator;   
+ 		   }
+ 		   else
+ 		   {
+ 			  FracCalc.operand1ImproperNumerator = numerator;
+ 		   }
+ 		   
     	}
     	else
     	{
     	   FracCalc.operand2Wholenumber = wholenumber;
    		   FracCalc.operand2Numerator = numerator;
    		   FracCalc.operand2Denominator  = denominator;
-   		   FracCalc.operand2ImproperNumerator = (wholenumber * denominator) + numerator;
+   		   if (wholenumber != 0)
+ 		   {
+   			  FracCalc.operand2ImproperNumerator = (wholenumber * denominator) + numerator;  
+ 		   }
+   		 else
+		   {
+			  FracCalc.operand2ImproperNumerator = numerator;
+		   }
     	}
     }
     
@@ -136,9 +151,7 @@ public class FracCalc {
 		   return findGcd(number2, number1 % number2);
 	}
 	   
-	   public static void convertToImproper(int wholenumber, int numerator, int denominator) {
-		   int tempnumerator = numerator;
-		   numerator = (denominator * wholenumber) + tempnumerator;
+	   public static void Add() {
 	   }
     
     public static String parseFractionCheckPoint2(String operand) {
