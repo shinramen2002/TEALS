@@ -12,7 +12,9 @@ import fracCalc.FracCalcTestHelper;
 public class FracCalcProduceAnswerTests {
 	@Test
 	public void ValidateInput_ShouldBeCorrectFormat() {
-		assertEquals("4", FracCalc.produceAnswer("2 + 4"));
+		String result = FracCalc.produceAnswer("2 + 4");
+		assertEquals("6", result);
+		System.out.println(result);
 	}
 
 	@Test
@@ -24,12 +26,12 @@ public class FracCalcProduceAnswerTests {
 
 	@Test
 	public void ValidateInput_ShouldBeCorrectFormatUsingFractions() {
-		assertEquals("4", FracCalc.produceAnswer("3_1/2 + 1/4"));
+		assertEquals("3_3/4", FracCalc.produceAnswer("3_1/2 + 1/4"));
 	}
 
 	@Test
 	public void ValidateInput_ShouldBeCorrectFormatUsingFractionsReturnsOperand2() {
-		assertEquals("4", FracCalc.produceAnswer("3_1/2 + 3_1/4"));
+		assertEquals("6_3/4", FracCalc.produceAnswer("3_1/2 + 3_1/4"));
 	}
 
 	// ParseFraction Tests
@@ -88,7 +90,7 @@ public class FracCalcProduceAnswerTests {
 		FracCalc.parseFraction("3/4", true);
 		FracCalc.parseFraction("2/4", false);
 		String result = FracCalc.Add();
-		assertEquals("5/4", result);
+		assertEquals("1_1/4", result);
 		System.out.println(result);
 	}
 
@@ -106,7 +108,7 @@ public class FracCalcProduceAnswerTests {
 		FracCalc.parseFraction("3/4", true);
 		FracCalc.parseFraction("1/3", false);
 		String result = FracCalc.Add();
-		assertEquals("13/12", result);
+		assertEquals("1_1/12", result);
 		System.out.println(result);
 	}
 
@@ -117,7 +119,7 @@ public class FracCalcProduceAnswerTests {
 		FracCalc.parseFraction("1/4", true);
 		FracCalc.parseFraction("1_1/2", false);
 		String result = FracCalc.Add();
-		assertEquals("7/4", result);
+		assertEquals("1_3/4", result);
 		System.out.println("Test Case 1 - Passed! : " + result);
 	}
 

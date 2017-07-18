@@ -70,9 +70,8 @@ public class FracCalc {
 			parseFraction(operand1, true);
 			parseFraction(operand2, false);
 			FracCalc.operator = operator;
-			if (operator.equalsIgnoreCase("+"))
-			{
-				FracCalc.Add();	
+			if (operator.equalsIgnoreCase("+")) {
+				FracCalc.Add();
 			}
 			return FracCalc.finalresult;
 		}
@@ -148,27 +147,28 @@ public class FracCalc {
 		}
 		return findGcd(number2, number1 % number2);
 	}
-	
+
 	public static String turnImproperFractionToMixedFraction(int numerator, int denominator) {
-		// Integer a = numerator / denominator;
-		// Integer b = numerator % denominator);
-		// return a != 0 ? (a + " " + b + "/" + denominator) : (b + "/" + denominator);
-		return "";
+		Integer wholenumber = numerator / denominator;
+		Integer remainder = numerator % denominator;
+		return wholenumber != 0 ? (wholenumber + "_" + remainder + "/" + denominator) : (remainder + "/" + denominator);
 	}
 
 	public static String Add() {
-		//Algorithm
-		//1) Set all Fractions to Improper Fractions to make operations easier
-		//2) Check to see if the denominators are the same
-		//3) If yes, simply add the numerator then set the display to either whole number or fraction
-		//4) If no, Check the common denominator
-		//4.1) Perform normal operation
-		//4.2) Simply the improper Fraction  
+		// Algorithm
+		// 1) Set all Fractions to Improper Fractions to make operations easier
+		// 2) Check to see if the denominators are the same
+		// 3) If yes, simply add the numerator then set the display to either whole
+		// number or fraction
+		// 4) If no, Check the common denominator
+		// 4.1) Perform normal operation
+		// 4.2) Simply the improper Fraction
 		int tempnumerator = 0;
 		int commondenominator = 0;
 		if (FracCalc.operand1Denominator == FracCalc.operand2Denominator) {
-			tempnumerator = FracCalc.operand1Numerator + FracCalc.operand2Numerator;
-		 	SetResult(tempnumerator, FracCalc.operand1Denominator);
+			tempnumerator = FracCalc.operand1ImproperNumerator + FracCalc.operand2ImproperNumerator;
+			//Since the denominator are the same let's just use Operand1 denom
+			SetResult(tempnumerator, FracCalc.operand1Denominator);
 		} else {
 			commondenominator = FracCalc.operand1Denominator * FracCalc.operand2Denominator;
 			FracCalc.operand1ImproperNumerator = FracCalc.operand1ImproperNumerator
@@ -180,14 +180,18 @@ public class FracCalc {
 		}
 		return FracCalc.finalresult;
 	}
-	
+
 	public static void SetResult(int numerator, int denominator) {
 		if (numerator % denominator == 0) {
 			FracCalc.finalresult = Integer.toString(numerator / denominator);
 		} else {
 			int gcd = FracCalc.findGcd(numerator, denominator);
-			FracCalc.finalresult = Integer.toString(numerator / gcd) + "/" + Integer.toString(denominator / gcd);
-		}		
+			int simplifiednumerator =  numerator / gcd;
+			int simplifieddenominator =  denominator / gcd;
+			//FracCalc.finalresult = Integer.toString(numerator / gcd) + "/" + Integer.toString(denominator / gcd);
+			//Replace to convert to Mixed Fraction if need be:
+			FracCalc.finalresult = turnImproperFractionToMixedFraction(simplifiednumerator, simplifieddenominator);
+		}
 	}
 
 	public static String parseFractionCheckPoint2(String operand) {
