@@ -248,11 +248,11 @@ public class FracCalc {
 		if (numerator % denominator == 0) {
 			FracCalc.finalresult = Integer.toString(numerator / denominator);
 		} else {
+			//Simplify Fractions
 			int gcd = FracCalc.findGcd(numerator, denominator);
 			int simplifiednumerator =  numerator / gcd;
 			int simplifieddenominator =  denominator / gcd;
-			//FracCalc.finalresult = Integer.toString(numerator / gcd) + "/" + Integer.toString(denominator / gcd);
-			//Replace to convert to Mixed Fraction if need be:
+			//Convert back to Mixed Form
 			FracCalc.finalresult = turnImproperFractionToMixedFraction(simplifiednumerator, simplifieddenominator);
 		}
 	}
