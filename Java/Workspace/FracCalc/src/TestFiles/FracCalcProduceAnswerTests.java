@@ -84,12 +84,13 @@ public class FracCalcProduceAnswerTests {
 	}
 
 	// Calculation Tests
-	// Test Case 1: 1/4 + 1_1/2 = 1_3/4
+	// 
 	@Test
 	public void Validate_CalculateAddSameDenominator() {
 		FracCalc.parseFraction("3/4", true);
 		FracCalc.parseFraction("2/4", false);
-		String result = FracCalc.Add();
+		FracCalc.Add();
+		String result = FracCalc.finalresult;
 		assertEquals("1_1/4", result);
 		System.out.println(result);
 	}
@@ -98,7 +99,8 @@ public class FracCalcProduceAnswerTests {
 	public void Validate_CalculateAddSameDenominatorResultsToWhole() {
 		FracCalc.parseFraction("3/4", true);
 		FracCalc.parseFraction("1/4", false);
-		String result = FracCalc.Add();
+		FracCalc.Add();
+		String result = FracCalc.finalresult;
 		assertEquals("1", result);
 		System.out.println(result);
 	}
@@ -107,7 +109,8 @@ public class FracCalcProduceAnswerTests {
 	public void Validate_CalculateAddDifferentDenominator() {
 		FracCalc.parseFraction("3/4", true);
 		FracCalc.parseFraction("1/3", false);
-		String result = FracCalc.Add();
+		FracCalc.Add();
+		String result = FracCalc.finalresult;
 		assertEquals("1_1/12", result);
 		System.out.println(result);
 	}
@@ -118,7 +121,8 @@ public class FracCalcProduceAnswerTests {
 	public void Validate_CalculateAddTestCase1() {
 		FracCalc.parseFraction("1/4", true);
 		FracCalc.parseFraction("1_1/2", false);
-		String result = FracCalc.Add();
+		FracCalc.Add();
+		String result = FracCalc.finalresult;
 		assertEquals("1_3/4", result);
 		System.out.println("Test Case 1 - Passed! : " + result);
 	}
@@ -128,14 +132,34 @@ public class FracCalcProduceAnswerTests {
 	public void Validate_CalculateAddTestCase2() {
 		FracCalc.parseFraction("8/4", true);
 		FracCalc.parseFraction("2", false);
-		String result = FracCalc.Add();
+		FracCalc.Add();
+		String result = FracCalc.finalresult;
 		assertEquals("4", result);
 		System.out.println("Test Case 2 - Passed! : " + result);
 	}
+	
+	// Test Case 3: -11/17 + -1/17 = -12/17
+	@Test
+	public void Validate_CalculateAddTestCase3() {
+		FracCalc.parseFraction("-11/17", true);
+		FracCalc.parseFraction("-1/17", false);
+		FracCalc.Add();
+		String result = FracCalc.finalresult;
+		assertEquals("-12/17", result);
+		System.out.println("Test Case 3 - Passed! : " + result);
+	}
 
-
-
-	// Test Case 3: -1 * -1/2 = 1/2
-	// Test Case 4: -11/17 + -1/17 = -12/17
-	// Test Case 5: 0 * 25_462/543 0
+	
+	//-1 * -1/2 = 1/2
+	@Test 
+	public void Validate_CalculateOperatorMultiplication() {
+		FracCalc.parseFraction("-1", true);
+		FracCalc.parseFraction("-1/2", false);
+		FracCalc.Multiply();
+		String result = FracCalc.finalresult;
+		assertEquals("1/2", result);
+		System.out.println(result);
+	}
+	
+	//Test Case 5: 0 * 25_462/543 0
 }
