@@ -34,31 +34,35 @@ public class FracCalcProduceAnswerTests {
 		assertEquals("6_3/4", FracCalc.produceAnswer("3_1/2 + 3_1/4"));
 	}
 
+	// Only used for Checkpoint 2
 	// ParseFraction Tests
-	@Test
-	public void Validate_ParseFraction_Mixed() {
-		String fraction = "6_5/8";
-		assertEquals("Incorrect Fraction Parsing", "whole:6 numerator:5 denominator:8",
-				FracCalc.parseFractionCheckPoint2(fraction));
-		System.out.println(FracCalc.parseFractionCheckPoint2(fraction));
-	}
-
-	// ParseFraction Tests
-	@Test
-	public void Validate_ParseFraction_Improper() {
-		String fraction = "5/8";
-		assertEquals("Incorrect Fraction Parsing", "whole:0 numerator:5 denominator:8",
-				FracCalc.parseFractionCheckPoint2(fraction));
-		System.out.println(FracCalc.parseFractionCheckPoint2(fraction));
-	}
-
-	@Test
-	public void Validate_ParseFraction_OnlyWholeNumber() {
-		String fraction = "1";
-		assertEquals("Incorrect Fraction Parsing", "whole:1 numerator:0 denominator:1",
-				FracCalc.parseFractionCheckPoint2(fraction));
-		System.out.println(FracCalc.parseFractionCheckPoint2(fraction));
-	}
+	// @Test
+	// public void Validate_ParseFraction_Mixed() {
+	// String fraction = "6_5/8";
+	// assertEquals("Incorrect Fraction Parsing", "whole:6 numerator:5
+	// denominator:8",
+	// FracCalc.parseFractionCheckPoint2(fraction));
+	// System.out.println(FracCalc.parseFractionCheckPoint2(fraction));
+	// }
+	//
+	// // ParseFraction Tests
+	// @Test
+	// public void Validate_ParseFraction_Improper() {
+	// String fraction = "5/8";
+	// assertEquals("Incorrect Fraction Parsing", "whole:0 numerator:5
+	// denominator:8",
+	// FracCalc.parseFractionCheckPoint2(fraction));
+	// System.out.println(FracCalc.parseFractionCheckPoint2(fraction));
+	// }
+	//
+	// @Test
+	// public void Validate_ParseFraction_OnlyWholeNumber() {
+	// String fraction = "1";
+	// assertEquals("Incorrect Fraction Parsing", "whole:1 numerator:0
+	// denominator:1",
+	// FracCalc.parseFractionCheckPoint2(fraction));
+	// System.out.println(FracCalc.parseFractionCheckPoint2(fraction));
+	// }
 
 	// TurnImproperFractionToMixedFraction Tests
 	@Test
@@ -84,7 +88,7 @@ public class FracCalcProduceAnswerTests {
 	}
 
 	// Calculation Tests
-	// 
+	//
 	@Test
 	public void Validate_CalculateAddSameDenominator() {
 		FracCalc.parseFraction("3/4", true);
@@ -137,7 +141,7 @@ public class FracCalcProduceAnswerTests {
 		assertEquals("4", result);
 		System.out.println("Test Case 2 - Passed! : " + result);
 	}
-	
+
 	// Test Case 3: -11/17 + -1/17 = -12/17
 	@Test
 	public void Validate_CalculateAddTestCase3() {
@@ -149,10 +153,9 @@ public class FracCalcProduceAnswerTests {
 		System.out.println("Test Case 3 - Passed! : " + result);
 	}
 
-	
-	//Multiplication
-	//-1 * -1/2 = 1/2
-	@Test 
+	// Multiplication
+	// -1 * -1/2 = 1/2
+	@Test
 	public void Validate_CalculateOperatorMultiplication() {
 		FracCalc.parseFraction("-1", true);
 		FracCalc.parseFraction("-1/2", false);
@@ -161,9 +164,9 @@ public class FracCalcProduceAnswerTests {
 		assertEquals("1/2", result);
 		System.out.println(result);
 	}
-	
-	//Test Case 1: 0 * 25_462/543 = 0
-	@Test 
+
+	// Test Case 1: 0 * 25_462/543 = 0
+	@Test
 	public void Validate_CalculateMultiplicationTestCase1() {
 		FracCalc.parseFraction("0", true);
 		FracCalc.parseFraction("25_462/543", false);
@@ -172,10 +175,10 @@ public class FracCalcProduceAnswerTests {
 		assertEquals("0", result);
 		System.out.println(result);
 	}
-	
-	//Subtraction
-	//Test Case 1: -3/7 - 20 = -20_3/7
-	@Test 
+
+	// Subtraction
+	// Test Case 1: -3/7 - 20 = -20_3/7
+	@Test
 	public void Validate_CalculateSubtrationTestCase1() {
 		FracCalc.parseFraction("-3/7", true);
 		FracCalc.parseFraction("20", false);
@@ -184,5 +187,5 @@ public class FracCalcProduceAnswerTests {
 		assertEquals("-20_3/7", result);
 		System.out.println(result);
 	}
-	
+
 }
