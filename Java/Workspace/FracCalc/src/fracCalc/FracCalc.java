@@ -8,11 +8,13 @@ public class FracCalc {
 	public static int operand1Wholenumber = 0;
 	public static int operand1Numerator = 0;
 	public static int operand1Denominator = 0;
+	public static int operand1ImproperNumerator = 0;
 	
 	//Operand 2
 	public static int operand2Wholenumber = 0;
 	public static int operand2Numerator = 0;
 	public static int operand2Denominator = 0;
+	public static int operand2ImproperNumerator = 0;
 	
 	//Operator
 	public static String operator = "";
@@ -112,15 +114,32 @@ public class FracCalc {
     	if (operand1) { 		   
  		   FracCalc.operand1Wholenumber = wholenumber;
  		   FracCalc.operand1Numerator = numerator;
- 		   FracCalc.operand1Denominator  = denominator;    		
+ 		   FracCalc.operand1Denominator  = denominator;   
+ 		   FracCalc.operand1ImproperNumerator = (wholenumber * denominator) + numerator;
     	}
     	else
     	{
     	   FracCalc.operand2Wholenumber = wholenumber;
    		   FracCalc.operand2Numerator = numerator;
-   		   FracCalc.operand2Denominator  = denominator;  
+   		   FracCalc.operand2Denominator  = denominator;
+   		   FracCalc.operand2ImproperNumerator = (wholenumber * denominator) + numerator;
     	}
     }
+    
+	   public static int findGcd(int number1, int number2)
+	   { 
+		   //In Euclid's algorithm, we start with two numbers X and Y. If Y is zero then greatest common divisor of both will be X, but if Y is not zero then we assign the Y to X and Y becomes X%Y. Once again we check if Y is zero, if yes then we have our greatest common divisor or GCD otherwise we keep continue like this until Y becomes zero. Since we are using modulo operator, the number is getting smaller and smaller at each iteration, so the X%Y will eventually become zero.
+		   if(number2 == 0)
+		   { 
+			   return number1; 
+		   }
+		   return findGcd(number2, number1 % number2);
+	}
+	   
+	   public static void convertToImproper(int wholenumber, int numerator, int denominator) {
+		   int tempnumerator = numerator;
+		   numerator = (denominator * wholenumber) + tempnumerator;
+	   }
     
     public static String parseFractionCheckPoint2(String operand) {
  	   String fraction = operand;   

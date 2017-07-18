@@ -68,14 +68,28 @@ public class FracCalcProduceAnswerTests {
 	     	 assertEquals(3, FracCalc.operand2Numerator);
 	    }
 	   
-	   //Calculation Tests
-	   //Test Case 1: 1/4 + 1_1/2 =	1_3/4
-	   @Test public void Validate_CalculateExpression_Add()
+	   //Find GCD
+	   @Test public void Validate_findGcd()
 	    {
-		   String fraction = "6_5/8";
-		   
-	    }
+		   int result = FracCalc.findGcd(54, 24); 
+		   assertEquals(6, result);
+		}
 	   
+	   //Convert Mixed to Improper Fraction
+	   @Test public void Validate_ConvertToImproper()
+	    {
+		   FracCalc.parseFraction("1_3/4", false);
+		   assertEquals(7, FracCalc.operand2ImproperNumerator);
+		}
+	  
+	   
+	 //Calculation Tests
+	   //Test Case 1: 1/4 + 1_1/2 =	1_3/4
+	   @Test public void Validate_CalculateAdd()
+	    {
+		   int result = FracCalc.findGcd(54, 24); 
+		   assertEquals(6, result);
+		}
 	   //Test Case 2: 8/4 + 2	= 4
 	   //Test Case 3: -1 * = -1/2
 	   //Test Case 4: -11/17 + -1/17 = -12/17
