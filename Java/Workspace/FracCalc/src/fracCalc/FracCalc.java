@@ -77,7 +77,7 @@ public class FracCalc {
 				Multiply();
 			}
 			else if (operator.equalsIgnoreCase("-")) {
-				
+				Subract();
 			}
 			else if (operator.equalsIgnoreCase("/")) {
 				
@@ -160,7 +160,14 @@ public class FracCalc {
 	public static String turnImproperFractionToMixedFraction(int numerator, int denominator) {
 		Integer wholenumber = numerator / denominator;
 		Integer remainder = numerator % denominator;
-		return wholenumber != 0 ? (wholenumber + "_" + remainder + "/" + denominator) : (remainder + "/" + denominator);
+		//Check to see if the result is a negative result and remove the "-" char from the fraction and only show it in the whole number
+		if (wholenumber < 0)
+		//if (Integer.toString(remainder).contains("-"))
+		{
+			remainder = Integer.parseInt(Integer.toString(remainder).split("-")[1]);
+		}
+		return wholenumber != 0 ? 
+				(wholenumber + "_" + remainder + "/" + denominator) : (remainder + "/" + denominator);
 	}
 	
 	public static String Add() {
@@ -207,6 +214,35 @@ public class FracCalc {
 	    SetResult(tempnumerator, tempdenominator);
 	    return FracCalc.finalresult;
 	}
+	
+	public static String Subract() {
+		// Algorithm
+		// 1) Set all Fractions to Improper Fractions to make operations easier
+		// 2) Check to see if the denominators are the same
+		// 3) If yes, simply add the numerator then set the display to either whole
+		// number or fraction
+		// 4) If no, Check the common denominator
+		// 4.1) Perform normal operation
+		// 4.2) Simply the improper Fraction
+		int tempnumerator = 0;
+		int commondenominator = 0;
+		if (FracCalc.operand1Denominator == FracCalc.operand2Denominator) {
+			//Call Calculate Numerator based on operator
+			tempnumerator = FracCalc.operand1ImproperNumerator - FracCalc.operand2ImproperNumerator;
+			//Since the denominator are the same let's just use Operand1 denom
+			SetResult(tempnumerator, FracCalc.operand1Denominator);
+		} else {
+			commondenominator = FracCalc.operand1Denominator * FracCalc.operand2Denominator;
+			FracCalc.operand1ImproperNumerator = FracCalc.operand1ImproperNumerator
+					* (commondenominator / FracCalc.operand1Denominator);
+			FracCalc.operand2ImproperNumerator = FracCalc.operand2ImproperNumerator
+					* (commondenominator / FracCalc.operand2Denominator);
+			tempnumerator = FracCalc.operand1ImproperNumerator - FracCalc.operand2ImproperNumerator;
+			SetResult(tempnumerator, commondenominator);
+		}
+		return FracCalc.finalresult;
+	}
+	
 
 	public static void SetResult(int numerator, int denominator) {
 		if (numerator % denominator == 0) {

@@ -150,6 +150,7 @@ public class FracCalcProduceAnswerTests {
 	}
 
 	
+	//Multiplication
 	//-1 * -1/2 = 1/2
 	@Test 
 	public void Validate_CalculateOperatorMultiplication() {
@@ -161,5 +162,27 @@ public class FracCalcProduceAnswerTests {
 		System.out.println(result);
 	}
 	
-	//Test Case 5: 0 * 25_462/543 0
+	//Test Case 1: 0 * 25_462/543 = 0
+	@Test 
+	public void Validate_CalculateMultiplicationTestCase1() {
+		FracCalc.parseFraction("0", true);
+		FracCalc.parseFraction("25_462/543", false);
+		FracCalc.Multiply();
+		String result = FracCalc.finalresult;
+		assertEquals("0", result);
+		System.out.println(result);
+	}
+	
+	//Subtraction
+	//Test Case 1: -3/7 - 20 = -20_3/7
+	@Test 
+	public void Validate_CalculateSubtrationTestCase1() {
+		FracCalc.parseFraction("-3/7", true);
+		FracCalc.parseFraction("20", false);
+		FracCalc.Subract();
+		String result = FracCalc.finalresult;
+		assertEquals("-20_3/7", result);
+		System.out.println(result);
+	}
+	
 }
