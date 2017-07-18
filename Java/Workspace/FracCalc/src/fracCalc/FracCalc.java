@@ -80,7 +80,7 @@ public class FracCalc {
 				Subract();
 			}
 			else if (operator.equalsIgnoreCase("/")) {
-				
+				Divide();
 			}
 			return FracCalc.finalresult;
 		}
@@ -126,7 +126,18 @@ public class FracCalc {
 			FracCalc.operand1Numerator = numerator;
 			FracCalc.operand1Denominator = denominator;
 			if (wholenumber != 0) {
+				//Check if it's negative then do absolute value and add the negative value back
+				if (Integer.toString(wholenumber).contains("-"))
+				{
+					wholenumber = Integer.parseInt(Integer.toString(wholenumber).split("-")[1]);
+					//Convert back to negative
+					FracCalc.operand1ImproperNumerator = ((wholenumber * denominator) + numerator) * (-1);
+				}
+				else
+				{
 				FracCalc.operand1ImproperNumerator = (wholenumber * denominator) + numerator;
+				}
+				//FracCalc.operand1ImproperNumerator = (wholenumber * denominator) + numerator;
 			} else {
 				FracCalc.operand1ImproperNumerator = numerator;
 			}
@@ -136,7 +147,18 @@ public class FracCalc {
 			FracCalc.operand2Numerator = numerator;
 			FracCalc.operand2Denominator = denominator;
 			if (wholenumber != 0) {
+				//Check if it's negative then do absolute value and add the negative value back
+				if (Integer.toString(wholenumber).contains("-"))
+				{
+					wholenumber = Integer.parseInt(Integer.toString(wholenumber).split("-")[1]);
+					//Convert back to negative
+					FracCalc.operand2ImproperNumerator = ((wholenumber * denominator) + numerator) * (-1);
+				}
+				else
+				{
 				FracCalc.operand2ImproperNumerator = (wholenumber * denominator) + numerator;
+				}
+				//FracCalc.operand2ImproperNumerator = (wholenumber * denominator) + numerator;
 			} else {
 				FracCalc.operand2ImproperNumerator = numerator;
 			}
@@ -164,12 +186,36 @@ public class FracCalc {
 		if (wholenumber < 0)
 		//if (Integer.toString(remainder).contains("-"))
 		{
-			remainder = Integer.parseInt(Integer.toString(remainder).split("-")[1]);
+			//Again Check to see if the remainder is negative
+			if (Integer.toString(remainder).contains("-"))
+			{
+				remainder = Integer.parseInt(Integer.toString(remainder).split("-")[1]);
+			}
 		}
 		return wholenumber != 0 ? 
 				(wholenumber + "_" + remainder + "/" + denominator) : (remainder + "/" + denominator);
 	}
 	
+
+	public static void SetResult(int numerator, int denominator) {
+		if (numerator % denominator == 0) {
+			FracCalc.finalresult = Integer.toString(numerator / denominator);
+		} else {
+			//Simplify Fractions
+			int gcd = FracCalc.findGcd(numerator, denominator);
+			//Remove negative number on gcd (Get Absolute value)
+			if (Integer.toString(gcd).contains("-"))
+			{
+				gcd = Integer.parseInt(Integer.toString(gcd).split("-")[1]);
+			}			
+			int simplifiednumerator =  numerator / gcd;
+			int simplifieddenominator =  denominator / gcd;
+			//Convert back to Mixed Form
+			FracCalc.finalresult = turnImproperFractionToMixedFraction(simplifiednumerator, simplifieddenominator);
+		}
+	}
+
+	//Calculations
 	public static String Add() {
 		// Algorithm
 		// 1) Set all Fractions to Improper Fractions to make operations easier
@@ -256,27 +302,13 @@ public class FracCalc {
 		int tempdenominator = 0;
 		//Invert reciprocal of Operand 2
 		int tempvalue = FracCalc.operand2Denominator;
-		FracCalc.operand2Denominator = FracCalc.operand2Numerator;
-		FracCalc.operand2Numerator = tempvalue;
+		FracCalc.operand2Denominator = FracCalc.operand2ImproperNumerator;
+		FracCalc.operand2ImproperNumerator = tempvalue;
 		tempnumerator = FracCalc.operand1ImproperNumerator * FracCalc.operand2ImproperNumerator;
 		tempdenominator =  FracCalc.operand1Denominator * FracCalc.operand2Denominator;
 	    SetResult(tempnumerator, tempdenominator);
 	    return FracCalc.finalresult;
-	}
-	
-
-	public static void SetResult(int numerator, int denominator) {
-		if (numerator % denominator == 0) {
-			FracCalc.finalresult = Integer.toString(numerator / denominator);
-		} else {
-			//Simplify Fractions
-			int gcd = FracCalc.findGcd(numerator, denominator);
-			int simplifiednumerator =  numerator / gcd;
-			int simplifieddenominator =  denominator / gcd;
-			//Convert back to Mixed Form
-			FracCalc.finalresult = turnImproperFractionToMixedFraction(simplifiednumerator, simplifieddenominator);
-		}
-	}
+	}	
 
 	public static String parseFractionCheckPoint2(String operand) {
 		String fraction = operand;
