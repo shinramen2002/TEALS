@@ -5,7 +5,7 @@ import java.util.Scanner;
 //Algorithm
 // First Rule! Set all Fractions to Improper Fractions to make operations easier
 // produceAnswer = parses operands
-// parsefractions = parses operands string then sets static class fields
+// parseFractions = parses operands string then sets static class fields
 // Each Operation Function or Method performs proper calculation then calls SetResult method
 // SetResult = converts the result to the proper string output. This method also calls GCD and ConvertFromImproperToMixed methods
 // findGcd = used to simplify improper fractions

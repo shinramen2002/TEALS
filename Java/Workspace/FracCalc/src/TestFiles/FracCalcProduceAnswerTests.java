@@ -187,5 +187,64 @@ public class FracCalcProduceAnswerTests {
 		assertEquals("-20_3/7", result);
 		System.out.println(result);
 	}
+	
+	//Validate Extra Credits
+	// 1 + 2 + 3 = 6
+	@Test
+	public void Validate_ExtraCreditTestCase1() {
+		String expression = "1 + 2 + 3";
+		String[] arrayinput = expression.split(" ");
+		CalculateEpxression(arrayinput[1], arrayinput[0], arrayinput[2]);
+		for(int i = 3; i < arrayinput.length; i+=2) 
+		{
+			CalculateEpxression(arrayinput[i], FracCalc.finalresult, arrayinput[i+1]);
+		}
+		String result = FracCalc.finalresult;
+		assertEquals("6", result);
+		System.out.println(result);
+	}
+	
+	@Test
+	public void Validate_ExtraCreditTestCase2() {
+		String expression = "-1/2 * 4 + 3/4";
+		String[] arrayinput = expression.split(" ");
+		CalculateEpxression(arrayinput[1], arrayinput[0], arrayinput[2]);
+		for(int i = 3; i < arrayinput.length; i+=2) 
+		{
+			CalculateEpxression(arrayinput[i], FracCalc.finalresult, arrayinput[i+1]);
+		}
+		String result = FracCalc.finalresult;
+		assertEquals("-1_1/4", result);
+		System.out.println(result);
+	}
+	
+	@Test
+	public void Validate_ExtraCreditTestCase3() {
+		String expression = "5_3/4 - -6_8/8 - 5_3/4";
+		String[] arrayinput = expression.split(" ");
+		CalculateEpxression(arrayinput[1], arrayinput[0], arrayinput[2]);
+		for(int i = 3; i < arrayinput.length; i+=2) 
+		{
+			CalculateEpxression(arrayinput[i], FracCalc.finalresult, arrayinput[i+1]);
+		}
+		String result = FracCalc.finalresult;
+		assertEquals("7", result);
+		System.out.println(result);
+	}
+	
+	public static void CalculateEpxression(String operator, String operand1, String operand2) {
+		FracCalc.parseFraction(operand1, true);
+		FracCalc.parseFraction(operand2, false);
+		FracCalc.operator = operator;
+		if (operator.equalsIgnoreCase("+")) {
+			FracCalc.Add();
+		} else if (operator.equalsIgnoreCase("*")) {
+			FracCalc.Multiply();
+		} else if (operator.equalsIgnoreCase("-")) {
+			FracCalc.Subract();
+		} else if (operator.equalsIgnoreCase("/")) {
+			FracCalc.Divide();
+		}
+	}
 
 }
