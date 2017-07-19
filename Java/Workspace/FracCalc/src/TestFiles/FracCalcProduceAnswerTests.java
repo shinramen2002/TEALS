@@ -20,7 +20,7 @@ public class FracCalcProduceAnswerTests {
 	@Test
 	public void ValidateInput_ShouldNotBeCorrectFormat() {
 		assertEquals("Input is not in the correct format",
-				"Input Expression is not in the correct Format. Values and operators will be separated by a single space",
+				"ERROR: Input is in an invalid format.",
 				FracCalc.produceAnswer("2 +"));
 	}
 

@@ -47,7 +47,7 @@ public class FracCalc {
 	public static String produceAnswer(String input) {
 		String[] arrayinput = input.split(" ");
 		if (arrayinput.length < 3) {
-			return "Input Expression is not in the correct Format. Values and operators will be separated by a single space";
+			return "ERROR: Input is in an invalid format.";
 		} else {
 			CalculateEpxression(arrayinput[1], arrayinput[0], arrayinput[2]);
 			for (int i = 3; i < arrayinput.length; i += 2) {
@@ -61,7 +61,7 @@ public class FracCalc {
 		FracCalc.parseFraction(operand1, true);
 		FracCalc.parseFraction(operand2, false);
 		FracCalc.operator = operator;
-		if (FracCalc.operand1Denominator == 0) {
+		if (FracCalc.operand1Denominator == 0 || FracCalc.operand2Denominator == 0) {
 			FracCalc.finalresult = "ERROR: Cannot divide by zero.";
 		} else {
 			if (operator.equalsIgnoreCase("+")) {
@@ -249,7 +249,6 @@ public class FracCalc {
 			tempdenominator = FracCalc.operand1Denominator * FracCalc.operand2Denominator;
 		} else {
 			int tempvalue = FracCalc.operand2Denominator;
-			// Always set negative value on numerator
 			FracCalc.operand2Denominator = FracCalc.operand2ImproperNumerator;
 			FracCalc.operand2ImproperNumerator = tempvalue;
 			tempnumerator = FracCalc.operand1ImproperNumerator * FracCalc.operand2ImproperNumerator;
