@@ -11,7 +11,6 @@ import java.util.Scanner;
 // findGcd = used to simplify improper fractions
 // turnImproperFractionToMixedFraction = convert improper fraction (as appropriate) to final results
 
-
 public class FracCalc {
 
 	// Operand 1
@@ -51,32 +50,34 @@ public class FracCalc {
 			return "Input Expression is not in the correct Format. Values and operators will be separated by a single space";
 		} else {
 			CalculateEpxression(arrayinput[1], arrayinput[0], arrayinput[2]);
-			for(int i = 3; i < arrayinput.length; i+=2) 
-			{
-				CalculateEpxression(arrayinput[i], FracCalc.finalresult, arrayinput[i+1]);
+			for (int i = 3; i < arrayinput.length; i += 2) {
+				CalculateEpxression(arrayinput[i], FracCalc.finalresult, arrayinput[i + 1]);
 			}
-			String result = FracCalc.finalresult;
 			return FracCalc.finalresult;
 		}
 	}
-	
+
 	public static void CalculateEpxression(String operator, String operand1, String operand2) {
 		FracCalc.parseFraction(operand1, true);
 		FracCalc.parseFraction(operand2, false);
 		FracCalc.operator = operator;
-		if (operator.equalsIgnoreCase("+")) {
-			FracCalc.Add();
-		} else if (operator.equalsIgnoreCase("*")) {
-			FracCalc.Multiply();
-		} else if (operator.equalsIgnoreCase("-")) {
-			FracCalc.Subract();
-		} else if (operator.equalsIgnoreCase("/")) {
-			FracCalc.Divide();
-		} else if (operator.length() > 1) {
-			FracCalc.finalresult = "ERROR: Input is in an invalid format.";
+		if (FracCalc.operand1Denominator == 0) {
+			FracCalc.finalresult = "ERROR: Cannot divide by zero.";
+		} else {
+			if (operator.equalsIgnoreCase("+")) {
+				FracCalc.Add();
+			} else if (operator.equalsIgnoreCase("*")) {
+				FracCalc.Multiply();
+			} else if (operator.equalsIgnoreCase("-")) {
+				FracCalc.Subract();
+			} else if (operator.equalsIgnoreCase("/")) {
+				FracCalc.Divide();
+			} else if (operator.length() > 1) {
+				FracCalc.finalresult = "ERROR: Input is in an invalid format.";
+			}
 		}
 	}
-	
+
 	public static void parseFraction(String operand, Boolean operand1) {
 		String fraction = operand;
 		String wholenumber = "0";
@@ -101,7 +102,7 @@ public class FracCalc {
 				denominator = "1";
 			}
 		}
-		//Set Static Variables
+		// Set Static Variables
 		SetStaticFieldValues(operand1, Integer.parseInt(wholenumber), Integer.parseInt(numerator),
 				Integer.parseInt(denominator));
 	}
@@ -143,7 +144,6 @@ public class FracCalc {
 		}
 	}
 
-
 	public static void SetResult(int numerator, int denominator) {
 		if (numerator % denominator == 0) {
 			FracCalc.finalresult = Integer.toString(numerator / denominator);
@@ -160,14 +160,13 @@ public class FracCalc {
 			FracCalc.finalresult = turnImproperFractionToMixedFraction(simplifiednumerator, simplifieddenominator);
 		}
 	}
-	
+
 	public static int findGcd(int number1, int number2) {
 		if (number2 == 0) {
 			return number1;
 		}
 		return findGcd(number2, number1 % number2);
 	}
-	
 
 	public static String turnImproperFractionToMixedFraction(int numerator, int denominator) {
 		Integer wholenumber = numerator / denominator;

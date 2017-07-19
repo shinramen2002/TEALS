@@ -213,5 +213,21 @@ public class FracCalcProduceAnswerTests {
 		assertEquals("7", result);
 		System.out.println(result);
 	}
-
+	
+	@Test
+	public void Validate_ExtraCreditTestCase4DivideByZero() {
+		String expression = "1/0 + 1";
+		String result = FracCalc.produceAnswer(expression);
+		assertEquals("ERROR: Cannot divide by zero.", result);
+		System.out.println(result);
+	}
+	
+	@Test
+	public void Validate_ExtraCreditTestCase4InvalidOperator() {
+		String expression = "1 ++ 2";
+		String result = FracCalc.produceAnswer(expression);
+		assertEquals("ERROR: Input is in an invalid format.", result);
+		System.out.println(result);
+	}	
+	
 }

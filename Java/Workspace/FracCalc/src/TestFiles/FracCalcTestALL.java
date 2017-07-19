@@ -13,6 +13,7 @@ import fracCalc.FracCalcTestHelper;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+	FracCalcProduceAnswerTests.class,
     FracCalcTestCheckpoint1.class,
     FracCalcTestCheckpoint2.class,
     FracCalcTestCheckpoint3.class,
