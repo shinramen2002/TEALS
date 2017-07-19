@@ -15,8 +15,8 @@ import fracCalc.FracCalcTestHelper;
 @Suite.SuiteClasses({
     FracCalcTestCheckpoint1.class,
     FracCalcTestCheckpoint2.class,
-    FracCalcTestCheckpoint3.class
-    //FracCalcTestFinal.class,
+    FracCalcTestCheckpoint3.class,
+    FracCalcTestFinal.class,
 })
 
 public class FracCalcTestALL

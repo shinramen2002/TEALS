@@ -47,25 +47,33 @@ public class FracCalc {
 
 	public static String produceAnswer(String input) {
 		String[] arrayinput = input.split(" ");
-		if (arrayinput.length != 3) {
+		if (arrayinput.length < 3) {
 			return "Input Expression is not in the correct Format. Values and operators will be separated by a single space";
 		} else {
-			String operand1 = arrayinput[0];
-			String operator = arrayinput[1];
-			String operand2 = arrayinput[2];
-			parseFraction(operand1, true);
-			parseFraction(operand2, false);
-			FracCalc.operator = operator;
-			if (operator.equalsIgnoreCase("+")) {
-				Add();
-			} else if (operator.equalsIgnoreCase("*")) {
-				Multiply();
-			} else if (operator.equalsIgnoreCase("-")) {
-				Subract();
-			} else if (operator.equalsIgnoreCase("/")) {
-				Divide();
+			CalculateEpxression(arrayinput[1], arrayinput[0], arrayinput[2]);
+			for(int i = 3; i < arrayinput.length; i+=2) 
+			{
+				CalculateEpxression(arrayinput[i], FracCalc.finalresult, arrayinput[i+1]);
 			}
+			String result = FracCalc.finalresult;
 			return FracCalc.finalresult;
+		}
+	}
+	
+	public static void CalculateEpxression(String operator, String operand1, String operand2) {
+		FracCalc.parseFraction(operand1, true);
+		FracCalc.parseFraction(operand2, false);
+		FracCalc.operator = operator;
+		if (operator.equalsIgnoreCase("+")) {
+			FracCalc.Add();
+		} else if (operator.equalsIgnoreCase("*")) {
+			FracCalc.Multiply();
+		} else if (operator.equalsIgnoreCase("-")) {
+			FracCalc.Subract();
+		} else if (operator.equalsIgnoreCase("/")) {
+			FracCalc.Divide();
+		} else if (operator.length() > 1) {
+			FracCalc.finalresult = "ERROR: Input is in an invalid format.";
 		}
 	}
 	
