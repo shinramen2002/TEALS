@@ -14,24 +14,30 @@ public class FracCalcProduceAnswerTests {
 	public void ValidateInput_ShouldBeCorrectFormat() {
 		String result = FracCalc.produceAnswer("2 + 4");
 		assertEquals("6", result);
-		System.out.println(result);
+		System.out.println("Test Case Passed! : " + result);
 	}
 
 	@Test
 	public void ValidateInput_ShouldNotBeCorrectFormat() {
+		
+		String result = FracCalc.produceAnswer("2 +");
 		assertEquals("Input is not in the correct format",
-				"ERROR: Input is in an invalid format.",
-				FracCalc.produceAnswer("2 +"));
+				"ERROR: Input is in an invalid format.", result);		
+		System.out.println("Test Case Passed! : " + result);
 	}
 
 	@Test
 	public void ValidateInput_ShouldBeCorrectFormatUsingFractions() {
-		assertEquals("3_3/4", FracCalc.produceAnswer("3_1/2 + 1/4"));
+		String result = FracCalc.produceAnswer("3_1/2 + 1/4");
+		assertEquals("3_3/4", result);
+		System.out.println("Test Case Passed! : " + result);
 	}
 
 	@Test
 	public void ValidateInput_ShouldBeCorrectFormatUsingFractionsReturnsOperand2() {
-		assertEquals("6_3/4", FracCalc.produceAnswer("3_1/2 + 3_1/4"));
+		String result = FracCalc.produceAnswer("3_1/2 + 3_1/4");
+		assertEquals("6_3/4", result);
+		System.out.println("Test Case Passed! : " + result);
 	}
 
 	// Only used for Checkpoint 2
@@ -71,6 +77,7 @@ public class FracCalcProduceAnswerTests {
 		FracCalc.parseFraction("1_3/4", false);
 		assertEquals(4, FracCalc.operand2Denominator);
 		assertEquals(3, FracCalc.operand2Numerator);
+		System.out.println("Test Case Passed! : SetStaticVariables");
 	}
 
 	// Find GCD
@@ -78,6 +85,7 @@ public class FracCalcProduceAnswerTests {
 	public void Validate_findGcd() {
 		int result = FracCalc.findGcd(54, 24);
 		assertEquals(6, result);
+		System.out.println("Test Case Passed! : GCD");
 	}
 
 	// Convert Mixed to Improper Fraction
@@ -85,6 +93,7 @@ public class FracCalcProduceAnswerTests {
 	public void Validate_ConvertToImproperNumerator() {
 		FracCalc.parseFraction("1_3/4", false);
 		assertEquals(7, FracCalc.operand2ImproperNumerator);
+		System.out.println("Test Case Passed! : SetImproperNumerator");
 	}
 
 	// Calculation Tests
@@ -96,7 +105,7 @@ public class FracCalcProduceAnswerTests {
 		FracCalc.Add();
 		String result = FracCalc.finalresult;
 		assertEquals("1_1/4", result);
-		System.out.println(result);
+		System.out.println("Test Case Passed! : " + result);
 	}
 
 	@Test
@@ -106,7 +115,7 @@ public class FracCalcProduceAnswerTests {
 		FracCalc.Add();
 		String result = FracCalc.finalresult;
 		assertEquals("1", result);
-		System.out.println(result);
+		System.out.println("Test Case Passed! : " + result);
 	}
 
 	@Test
@@ -116,7 +125,7 @@ public class FracCalcProduceAnswerTests {
 		FracCalc.Add();
 		String result = FracCalc.finalresult;
 		assertEquals("1_1/12", result);
-		System.out.println(result);
+		System.out.println("Test Case Passed! : " + result);
 	}
 
 	// Calculation Tests
@@ -128,7 +137,7 @@ public class FracCalcProduceAnswerTests {
 		FracCalc.Add();
 		String result = FracCalc.finalresult;
 		assertEquals("1_3/4", result);
-		System.out.println("Test Case 1 - Passed! : " + result);
+		System.out.println("Test Case Passed! : " + result);
 	}
 
 	// Test Case 2: 8/4 + 2 = 4
@@ -139,7 +148,7 @@ public class FracCalcProduceAnswerTests {
 		FracCalc.Add();
 		String result = FracCalc.finalresult;
 		assertEquals("4", result);
-		System.out.println("Test Case 2 - Passed! : " + result);
+		System.out.println("Test Case Passed! : " + result);
 	}
 
 	// Test Case 3: -11/17 + -1/17 = -12/17
@@ -150,7 +159,7 @@ public class FracCalcProduceAnswerTests {
 		FracCalc.Add();
 		String result = FracCalc.finalresult;
 		assertEquals("-12/17", result);
-		System.out.println("Test Case 3 - Passed! : " + result);
+		System.out.println("Test Case Passed! : " + result);
 	}
 
 	// Multiplication
@@ -162,7 +171,7 @@ public class FracCalcProduceAnswerTests {
 		FracCalc.Multiply();
 		String result = FracCalc.finalresult;
 		assertEquals("1/2", result);
-		System.out.println(result);
+		System.out.println("Test Case Passed! : " + result);
 	}
 
 	// Test Case 1: 0 * 25_462/543 = 0
@@ -173,7 +182,7 @@ public class FracCalcProduceAnswerTests {
 		FracCalc.Multiply();
 		String result = FracCalc.finalresult;
 		assertEquals("0", result);
-		System.out.println(result);
+		System.out.println("Test Case Passed! : " + result);
 	}
 
 	// Subtraction
@@ -185,49 +194,49 @@ public class FracCalcProduceAnswerTests {
 		FracCalc.Subract();
 		String result = FracCalc.finalresult;
 		assertEquals("-20_3/7", result);
-		System.out.println(result);
+		System.out.println("Test Case Passed! : " + result);
 	}
-	
-	//Validate Extra Credits
+
+	// Validate Extra Credits
 	// 1 + 2 + 3 = 6
 	@Test
 	public void Validate_ExtraCreditTestCase1() {
 		String expression = "1 + 2 + 3";
 		String result = FracCalc.produceAnswer(expression);
 		assertEquals("6", result);
-		System.out.println(result);
+		System.out.println("Test Case Passed! : " + result);
 	}
-	
+
 	@Test
 	public void Validate_ExtraCreditTestCase2() {
 		String expression = "-1/2 * 4 + 3/4";
 		String result = FracCalc.produceAnswer(expression);
 		assertEquals("-1_1/4", result);
-		System.out.println(result);
+		System.out.println("Test Case Passed! : " + result);
 	}
-	
+
 	@Test
 	public void Validate_ExtraCreditTestCase3() {
 		String expression = "5_3/4 - -6_8/8 - 5_3/4";
 		String result = FracCalc.produceAnswer(expression);
 		assertEquals("7", result);
-		System.out.println(result);
+		System.out.println("Test Case Passed! : " + result);
 	}
-	
+
 	@Test
 	public void Validate_ExtraCreditTestCase4DivideByZero() {
 		String expression = "1/0 + 1";
 		String result = FracCalc.produceAnswer(expression);
 		assertEquals("ERROR: Cannot divide by zero.", result);
-		System.out.println(result);
+		System.out.println("Test Case Passed! : " + result);
 	}
-	
+
 	@Test
 	public void Validate_ExtraCreditTestCase4InvalidOperator() {
 		String expression = "1 ++ 2";
 		String result = FracCalc.produceAnswer(expression);
 		assertEquals("ERROR: Input is in an invalid format.", result);
-		System.out.println(result);
-	}	
-	
+		System.out.println("Test Case Passed! : " + result);
+	}
+
 }

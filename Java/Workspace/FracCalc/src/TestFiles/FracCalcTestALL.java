@@ -35,16 +35,19 @@ public class FracCalcTestALL
         if (answer1 != null && candidate.equals(answer1))
         {
             // Passed
+        	System.out.println("Test Case Passed! : " + answer1);
             return;
         }
         if (answer2 != null && candidate.equals(answer2))
         {
             // Passed
+        	System.out.println("Test Case Passed! : " + answer2);
             return;
         }
         if (answer3 != null && FracCalcTestHelper.areFracsEqual(answer3, candidate))
         {
             // Passed
+        	System.out.println("Test Case Passed! : " + answer3);
             return;
         }
         
