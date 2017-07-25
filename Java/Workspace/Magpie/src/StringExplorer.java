@@ -12,8 +12,12 @@ public class StringExplorer
 		String sample = "The quick brown fox jumped over the lazy dog.";
 		
 		//  Demonstrate the indexOf method.
-		int position = sample.indexOf("quick");
+		int position = sample.indexOf("brown");
 		System.out.println ("sample.indexOf(\"quick\") = " + position);
+		
+		//  Demonstrate the indexOf method.
+		int positionindex = sample.indexOf("brown", "brown".length());
+		System.out.println ("sample.indexOf(\"quick\", sample.length()) = " + positionindex);
 		
 		//  Demonstrate the toLowerCase method.
 		String lowerCase = sample.toLowerCase();

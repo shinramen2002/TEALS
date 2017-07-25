@@ -32,11 +32,15 @@ public class Magpie2 {
 		if (statement.trim().length() == 0) {
 			response = "Say something, please.";
 		} else  if (statement.indexOf("no") >= 0) {
-			response = "Why so negative?";
-		} else if (statement.indexOf("mother") >= 0 || statement.indexOf("father") >= 0
-				|| statement.indexOf("sister") >= 0 || statement.indexOf("brother") >= 0) {
+			response = "Always think yes you can!";
+		} else if (statement.indexOf("mother") >= 0) {
+			response = "Hello Mom!";
+		} else if (statement.indexOf("father") >= 0) {
+			response = "Hello Dad!";
+		}else if (statement.indexOf("sister") >= 0 || statement.indexOf("brother") >= 0) {
 			response = "Tell me more about your family.";
-		} else if (statement.indexOf("dog") >= 0 || statement.indexOf("cat") >= 0) {
+		}
+		else if (statement.indexOf("dog") >= 0 || statement.indexOf("cat") >= 0) {
 			response = "Tell me more about your pets.";
 		} else if (statement.indexOf("johnson") >= 0 || statement.indexOf("Johnson") >= 0) {
 			response = "He's pretty awesome at teaching Comp Sci AP Class";
