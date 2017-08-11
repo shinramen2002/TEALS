@@ -2,6 +2,9 @@ public class IntArrayWorker
 {
   /** two dimensional matrix */
   private int[][] matrix = null;
+  public int totalcountof1 = 0;
+  public int totalcountof2 = 0;
+  public int totalcountof3 = 0;
   
   /** set the matrix to the passed one
     * @param theMatrix the one to use
@@ -26,6 +29,21 @@ public class IntArrayWorker
       }
     }
     return total;
+  }
+  
+  /** Get Count from exercise
+   * @param theMatrix the one to use
+   */
+  public int getCount(int count)
+  {   
+    if (count == 1)
+    	return totalcountof1;
+    else if (count == 2)
+    	return totalcountof2;
+    else if (count == 3)
+    	return totalcountof3;
+    else
+    	return 0;
   }
   
   /**
@@ -90,11 +108,20 @@ public class IntArrayWorker
            col++)
       {
         if (row < col)
+        {
           matrix[row][col] = 1;
+          totalcountof1 = totalcountof1 + 1;
+        }
         else if (row == col)
+        {
           matrix[row][col] = 2;
+          totalcountof2 = totalcountof2 + 1;
+        }
         else
+        {
           matrix[row][col] = 3;
+          totalcountof3 = totalcountof3 + 1;
+        }
       }
     }
   }
