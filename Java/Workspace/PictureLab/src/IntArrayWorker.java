@@ -5,7 +5,7 @@ public class IntArrayWorker
   public int totalcountof1 = 0;
   public int totalcountof2 = 0;
   public int totalcountof3 = 0;
-  
+ 
   /** set the matrix to the passed one
     * @param theMatrix the one to use
     */
@@ -24,8 +24,8 @@ public class IntArrayWorker
     for (int row = 0; row < matrix.length; row++)
     {
       for (int col = 0; col < matrix[0].length; col++)
-      {
-        total = total + matrix[row][col];
+      {   
+    	  total = total +  matrix[row][col];
       }
     }
     return total;
@@ -44,6 +44,20 @@ public class IntArrayWorker
     	return totalcountof3;
     else
     	return 0;
+  }
+  
+  public int getLargest()
+  { 
+	  int largetValueIntheMatrix = 0;
+	    for (int[] rowArray : matrix)
+	    {
+	      for (int item : rowArray)
+	      {	    
+	          if (item > largetValueIntheMatrix)
+	          	largetValueIntheMatrix = item;
+	      }
+	    }
+	    return largetValueIntheMatrix;	  
   }
   
   /**
