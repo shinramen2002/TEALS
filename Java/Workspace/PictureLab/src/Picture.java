@@ -97,6 +97,21 @@ public class Picture extends SimplePicture
       }
     }
   }
+
+  //** Method to keep Blue Values **/
+  /** Method to set the blue to 0 */
+  public void keepOnlyBlue()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.seteverythingtoblue(0);
+      }
+    }
+  }
+  
   
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
@@ -227,6 +242,7 @@ public class Picture extends SimplePicture
     beach.explore();
     beach.zeroBlue();
     beach.explore();
+    
   }
   
 } // this } is the end of class Picture, put all new methods before this

@@ -296,6 +296,15 @@ public class Pixel
     updatePicture(getAlpha(), getRed(), getGreen(), blue);
   } 
   
+  public void seteverythingtoblue(int value)
+  {
+    // set the blue value to the corrected value
+    int everythingtozero = correctValue(value);
+    
+    // update the pixel value in the picture
+    updatePicture(getAlpha(), everythingtozero, everythingtozero, getBlue());
+  } 
+  
    /**
    * Method to set the alpha (transparency) to a new alpha value
    * @param value the new value to use
