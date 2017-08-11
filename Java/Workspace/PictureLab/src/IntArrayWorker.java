@@ -60,6 +60,22 @@ public class IntArrayWorker
 	    return largetValueIntheMatrix;	  
   }
   
+  public int getColTotal(int column)
+  { 
+	  int grandtotal = 0;
+	  int[] totalcolumns = new int[matrix[0].length];
+	    for (int row = 0; row < matrix.length; row++)
+	    {
+	      for (int col = 0; col < matrix[0].length; col++)
+	      {   
+	    	  grandtotal = grandtotal +  matrix[row][col];
+	    	  totalcolumns[col] = totalcolumns[col] + matrix[row][col];
+	      }
+	    }
+	    return totalcolumns[column];
+  }
+  
+  
   /**
    * Method to return the total using a nested for-each loop
    * @return the total of the values in the array
