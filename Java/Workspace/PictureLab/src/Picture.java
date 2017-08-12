@@ -218,20 +218,43 @@ public class Picture extends SimplePicture {
 //	Top Left = 154 / 101 = Top Right = 154 / 169
 //	Lower left = 195 / 101 = Lower Right = 195 / 169
 	
+//	Right Arm:
+//		Top Left = 170 / 237 = Top Right = 170 / 293
+//		Lower left = 196/ 237 = Lower Right = 196/ 293
+	
 	public void mirrorArms() {
 		Pixel[][] pixels = this.getPixels2D();
+		
+		//Left Arm
+		int leftwidth = 68;
+		int leftrows = 41;
 		Pixel leftPixel = null;
 		Pixel rightPixel = null;
-		int width = 68;
-		int rows = 41;
-		for (int row = 0; row < rows ; row++) {
-			for (int col = 0; col < width / 2 ; col++) {
+		for (int row = 0; row < leftrows ; row++) {
+			for (int col = 0; col < leftwidth / 2 ; col++) {
 				//left pixel 2nd arm
 				leftPixel = pixels[154 + row][101 + col];
 				//right  pixel 2nd arm
 				rightPixel = pixels[154 + row][169 - 1 - col];
 				pixels[196 + row][104 + col].setColor(leftPixel.getColor()); 
 				pixels[196 + row][172 - 1 - col].setColor(rightPixel.getColor());
+			
+			}
+		}
+		
+		//Right Arm Loop
+		int rightwidth = 56;
+		int rightrows = 26;
+		Pixel rightarmleftPixel = null;
+		Pixel rightarmrightPixel = null;
+		for (int row = 0; row < rightrows ; row++) {
+			for (int col = 0; col < rightwidth / 2 ; col++) {
+				//left pixel 2nd arm
+				rightarmleftPixel = pixels[170 + row][237 + col];
+				//right  pixel 2nd arm
+				rightarmrightPixel = pixels[170 + row][293 - 1 - col];
+				pixels[197 + row][237 + col].setColor(rightarmleftPixel.getColor()); 
+				pixels[197 + row][293 - 1 - col].setColor(rightarmrightPixel.getColor());
 			
 			}
 		}
