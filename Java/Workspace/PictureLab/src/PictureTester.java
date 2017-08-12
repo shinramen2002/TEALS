@@ -119,8 +119,8 @@ public class PictureTester
     //testGetAverageForColumn(0);
 	//testKeepOnlyBlue();
 	 //testMirrorVertical();
-	 //testMirrorVerticalRightToLeft();
-	  //testMirrorHorizontal();
-	  testmirrorHorizontalBotToTop();
+	// testMirrorVerticalRightToLeft();
+	// testMirrorHorizontal();
+	//  testmirrorHorizontalBotToTop();
   }
 }
