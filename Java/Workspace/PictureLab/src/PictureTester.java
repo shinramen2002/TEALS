@@ -74,12 +74,21 @@ public class PictureTester
   }
   
   
-  /** Method to test mirrorTemple */
+  /** Method to test mirrorArms */
   public static void testMirrorArms()
   {
     Picture temple = new Picture("snowman.jpg");
     temple.explore();
     temple.mirrorArms();;
+    temple.explore();
+  }
+  
+  /** Method to test mirrorGull */
+  public static void testMirrorGull()
+  {
+    Picture temple = new Picture("seagull.jpg");
+    temple.explore();
+    temple.mirrorGull();
     temple.explore();
   }
   
@@ -114,8 +123,8 @@ public class PictureTester
     //testGrayscale();
     //testFixUnderwater();
     //testMirrorTemple();
-    testMirrorArms();
-    //testMirrorGull();
+    //testMirrorArms();
+    testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
     //testCopy();

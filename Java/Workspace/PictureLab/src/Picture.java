@@ -259,6 +259,31 @@ public class Picture extends SimplePicture {
 			}
 		}
 	}
+	
+//	Seagull
+//	Top Left = 234/ 235 = Top Right = 234/ 344
+//	Lower left = 321 / 235 = Lower Right = 321/ 344
+	
+	public void mirrorGull() {
+		Pixel[][] pixels = this.getPixels2D();
+		
+		//Left Arm
+		int width = 109;
+		int rows = 87;
+		Pixel leftPixel = null;
+		Pixel rightPixel = null;
+		for (int row = 0; row < rows ; row++) {
+			for (int col = 0; col < width / 2 ; col++) {
+				//left pixel 2nd arm
+				leftPixel = pixels[234 + row][235 + col];
+				//right  pixel 2nd arm
+				rightPixel = pixels[234 + row][343 - 1 - col];
+				pixels[234 + row][345 + col].setColor(leftPixel.getColor()); 
+				pixels[234 + row][453 - 1 - col].setColor(rightPixel.getColor());
+			
+			}
+		}
+	}
 
 	/**
 	 * copy from the passed fromPic to the specified startRow and startCol in the
