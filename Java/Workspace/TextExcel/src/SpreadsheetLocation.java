@@ -4,6 +4,9 @@
 
 public class SpreadsheetLocation implements Location
 {
+	Grid _grid;
+	String _cellname;
+	
     @Override
     public int getRow()
     {
@@ -20,6 +23,8 @@ public class SpreadsheetLocation implements Location
     
     public SpreadsheetLocation(String cellName)
     {
+    	_grid = new Spreadsheet();
+    	_cellname = cellName;
         // TODO: Fill this out with your own code
     }
 
