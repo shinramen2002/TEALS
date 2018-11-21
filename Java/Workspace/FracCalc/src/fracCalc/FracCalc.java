@@ -35,7 +35,7 @@ public class FracCalc {
 		String equation = console.nextLine();
 
 		while (!equation.toLowerCase().equals("quit")) {
-			String results = produceAnswer(equation);
+			String results =produceAnswer(equation);
 			System.out.println(results);
 			System.out.print("Please enter your equation (quit to quit): ");
 			equation = console.nextLine();
